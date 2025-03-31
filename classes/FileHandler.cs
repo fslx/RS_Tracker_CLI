@@ -1,0 +1,34 @@
+public class FileHandler : IFileHandler
+{
+    public void CreateNewFile(string? fileName)
+    {
+        if (!File.Exists(fileName))
+        {
+            File.Create(fileName);
+        }
+        else
+        {
+            throw new FileLoadException("File already exists..");
+        }
+    }
+
+    public void DeleteFile(string? fileName)
+    {
+        Console.WriteLine($"Are you sure you want to delete the file: {fileName} y/N?");
+        string? rl = Console.ReadLine();
+        if (rl.ToLower() == "y")
+        {
+            File.Delete(fileName);
+            Console.WriteLine("File successfully deleted!");
+        }
+        else
+        {
+            Console.WriteLine("No changes to file written..");
+        }
+    }
+
+    public void UpdateFileData(string filePath, string content)
+    {
+        File.AppendAllText(filePath, content);
+    }
+}

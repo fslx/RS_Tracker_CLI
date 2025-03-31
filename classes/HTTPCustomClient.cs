@@ -5,6 +5,7 @@ using System.Text.Json;
 public class HTTPCustomClient : IHTTPCustomClient
 {
     HttpClient? client = new HttpClient();
+    FileHandler fileHandler = new FileHandler();
     public async Task GetUserData(string? userName)
     {
 
@@ -16,6 +17,7 @@ public class HTTPCustomClient : IHTTPCustomClient
             var content = await response.Content.ReadAsStringAsync();
             var data = JsonDocument.Parse(content);
             string? output = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+            fileHandler.UpdateFileData("rs_data.json", output);
             Console.WriteLine(output);
         }
         catch (HttpRequestException e)

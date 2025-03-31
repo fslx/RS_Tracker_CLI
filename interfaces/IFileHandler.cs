@@ -9,7 +9,7 @@ public interface IFileHandler
     /// Update the filedata
     /// </summary>
     /// <param name="filePath">Name of the file to write to</param>
-    void UpdateFileData(string filePath);
+    void UpdateFileData(string filePath, string content);
     /// <summary>
     /// Delete a file when overwritten or when it needs to be discarded.
     /// </summary>
