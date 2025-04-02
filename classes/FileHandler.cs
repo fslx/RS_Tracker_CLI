@@ -16,8 +16,12 @@ public class FileHandler : IFileHandler
     {
         Console.WriteLine($"Are you sure you want to delete the file: {fileName} y/N?");
         string? rl = Console.ReadLine();
-        if (rl.ToLower() == "y")
+        if (rl?.ToLower() == "y")
         {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                throw new Exception("An error occured!");
+            }
             File.Delete(fileName);
             Console.WriteLine("File successfully deleted!");
         }

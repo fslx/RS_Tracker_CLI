@@ -4,7 +4,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        HTTPCustomClient clientClass = new HTTPCustomClient();
-        await clientClass.GetUserData("your_rns");
+        CLI cli = new CLI();
+        await cli.RunCLI();
     }
 }
