@@ -4,6 +4,7 @@ public class FileHandler : IFileHandler
     {
         if (!File.Exists(fileName))
         {
+            if (string.IsNullOrEmpty(fileName)) throw new NullReferenceException();
             File.Create(fileName);
         }
         else
