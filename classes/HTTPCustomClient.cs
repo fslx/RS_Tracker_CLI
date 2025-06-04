@@ -4,7 +4,7 @@ using System.Text.Json;
 
 public class HTTPCustomClient : IHTTPCustomClient
 {
-    HttpClient? client = new HttpClient();
+    HttpClient client = new HttpClient();
     FileHandler fileHandler = new FileHandler();
     public async Task GetUserData(string? userName)
     {
@@ -12,6 +12,9 @@ public class HTTPCustomClient : IHTTPCustomClient
         try
         {
             using HttpResponseMessage response = await client.GetAsync($"https://api.wiseoldman.net/v2/players/{userName}");
+            // tesing another endpoint for different games
+            //using HttpResponseMessage response = await client.GetAsync($"https://wank.wavu.wiki/api/replays");
+
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();

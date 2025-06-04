@@ -13,6 +13,14 @@ public class FileHandler : IFileHandler
         }
     }
 
+    public string GetRSN(string RSN)
+    {
+        string filePath = "rsn.txt"; // hardcoded
+        File.AppendAllText(filePath, RSN);
+        string rsn = File.ReadAllText(filePath);
+        return rsn;
+    }
+
     public void DeleteFile(string? fileName)
     {
         Console.WriteLine($"Are you sure you want to delete the file: {fileName} y/N?");
@@ -35,5 +43,17 @@ public class FileHandler : IFileHandler
     public void UpdateFileData(string filePath, string content)
     {
         File.AppendAllText(filePath, content);
+    }
+
+    public string ReadFromFile(string filePath)
+    {
+        string f = File.ReadAllText(filePath);
+        return f;
+    }
+
+    public string SendRSN()
+    {
+        string RSN = ReadFromFile("rsn.txt");
+        return RSN;
     }
 }
