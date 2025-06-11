@@ -16,16 +16,14 @@ public interface IDataManager
     /// <summary>
     /// Target the JSON dataset and print information about time to max
     /// </summary>
-    /// <returns>string</returns>
-    string TimeToMax();
+    void TimeToMax();
     /// <summary>
     /// Target the JSON dataset and print information about EHP
     /// </summary>
-    /// <returns>string</returns>
-    string GetEHP();
+
+    void GetEHP();
     /// <summary>
     /// Target the JSON dataset and print information about efficient bossing
     /// </summary>
-    /// <returns>string</returns>
-    string GetBossActivity();
+    void GetBossActivity();
 }

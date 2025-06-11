@@ -1,26 +1,49 @@
+using Spectre.Console;
 public class CLI
 {
     HTTPCustomClient clientClass = new HTTPCustomClient();
     private readonly FileHandler fileHandler = new FileHandler();
+    private DataManager? manager;
+
+    private void WelcomeMessage()
+    {
+        AnsiConsole.Write(new Panel("[maroon]OldSchool [grey23]RuneScape CLI[/]")
+        .Header("")
+        .Border(BoxBorder.Rounded)
+        .Padding(1, 1)
+        );
+    }
+
+
     public async Task RunCLI()
     {
-        Console.WriteLine("Welcome to the RS_Tracker_CLI\nThis program utilizes the WiseOldMan API to gather information on OldSchool RuneScape Data.\nUsage: f: Fetch data on a OSRS RNS.  u: Send a POST-request back to OldWiseMan. q: Quit the program.");
-        string? rl = Console.ReadLine();
-        switch (rl?.ToLower())
+
+        while (true)
         {
-            case "f":
-                Console.WriteLine("Enter RNS:");
-                string? rsn = Console.ReadLine();
-                fileHandler.GetRSN(rsn!);
-                await clientClass.GetUserData(rsn);
-                break;
-            case "u":
-                break;
-            case "q":
-                Environment.Exit(0);
-                break;
-            default:
-                throw new ArgumentException("Invalid argument selected! Exiting...");
+
+            //WelcomeMessage();
+
+            var command = AnsiConsole.Prompt(new SelectionPrompt<string>().Title("Select [green] command[/]:").AddChoices("fetch", "ehp", "ttm", "exit"));
+
+            switch (command)
+            {
+                case "fetch":
+                    var rsn = AnsiConsole.Ask<string>("Enter RNS");
+                    await clientClass.GetUserData(rsn);
+                    break;
+                case "ehp":
+                    manager!.GetEHP();
+                    break;
+                case "exit":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid argument selected! Exiting...");
+            }
+            AnsiConsole.WriteLine();
+            AnsiConsole.Markup("[grey50]Press Enter key to return to menu...[/]");
+            Console.ReadLine();
+            AnsiConsole.Clear();
         }
     }
 }

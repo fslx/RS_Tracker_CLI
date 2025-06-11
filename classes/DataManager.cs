@@ -4,27 +4,33 @@ public class DataManager : IDataManager
 {
     private readonly HTTPCustomClient? client;
 
-    private FileHandler userInfo;
-    private async Task<string> FetchInternalJSONData()
+    private FileHandler? userInfo;
+    private string FetchInternalJSONData()
     {
-        string userData = userInfo.SendRSN();
+        string userData = userInfo!.SendRSN();
         var data = client!.GetUserData(userData);
         return data.ToString()!;
     }
 
-    public string GetBossActivity()
-    {
-        throw new NotImplementedException();
-    }
 
-    public string GetEHP()
+    public void GetEHP()
     {
-        throw new NotImplementedException();
+        string filePath = FetchInternalJSONData();
+        string[] file = File.ReadAllLines(filePath);
+        foreach (string f in file)
+        {
+            Console.WriteLine($"Time To Max: {f} {f == "ttm"}");
+        }
     }
 
     public void GetUsefulData(string dataSet)
     {
-        throw new NotImplementedException();
+        string filePath = FetchInternalJSONData();
+        string[] file = File.ReadAllLines(filePath);
+        foreach (string f in file)
+        {
+            Console.WriteLine($"Time To Max: {f} {f == "ttm"}");
+        }
     }
 
     public string ReadDataSet(string dataSet)
@@ -38,7 +44,19 @@ public class DataManager : IDataManager
         return dataSet;
     }
 
-    public string TimeToMax()
+    public void TimeToMax()
+    {
+        string filePath = FetchInternalJSONData();
+        string[] file = File.ReadAllLines(filePath);
+        foreach (string f in file)
+        {
+            Console.WriteLine($"Time To Max: {f} {f == "ttm"}");
+        }
+    }
+
+
+
+    void IDataManager.GetBossActivity()
     {
         throw new NotImplementedException();
     }

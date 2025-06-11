@@ -1,6 +1,8 @@
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Spectre.Console;
+using Spectre.Console.Json;
 
 public class HTTPCustomClient : IHTTPCustomClient
 {
@@ -21,7 +23,13 @@ public class HTTPCustomClient : IHTTPCustomClient
             var data = JsonDocument.Parse(content);
             string? output = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
             fileHandler.UpdateFileData("rs_data.json", output);
-            Console.WriteLine(output);
+            var json = new JsonText(content);
+
+            AnsiConsole.Write(new Panel(json)
+                    .Header("Wise Old Man Data")
+                    .Collapse()
+                    .RoundedBorder()
+                    .BorderColor(Color.Yellow));
         }
         catch (HttpRequestException e)
         {

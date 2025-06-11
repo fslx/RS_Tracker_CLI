@@ -17,6 +17,7 @@
 *.userprefs
 # internal
 rs_data.json
+rsn.txt
 # Mono auto generated files
 mono_crash.*
 
