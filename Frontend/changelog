@@ -1,0 +1,4 @@
+Version 0.0.1
+    - Added Spectre Console to give the TUI a better user-experience
+    - Added Model-View-Controller architecture to the project
+
