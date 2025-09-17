@@ -41,6 +41,6 @@ public class RNSModel
     public string[]? Annotations { get; set; }
     public SnapshotDTO? LatestSnapshot { get; set; }
     public int TotalLevel { get; set; }
-
-
+    public EHP? ComputedEHP { get; set; }
+    public EHB? ComputedEHB { get; set; }
 }
