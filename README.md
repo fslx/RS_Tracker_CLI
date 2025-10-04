@@ -1,6 +1,12 @@
-# RS_Tracker_CLI
+# Wiseoldman_API_CSharp
 
-RS_Tracker_CLI is a command-line interface (CLI) application developed in C#. Its purpose and functionalities are to fetch game data from https://oldschool.runescape.com/ & https://wiseoldman.net/ and convey the information further to the CLI.
+Wiseoldman_API_CSharp is a command-line interface (CLI) application developed in C#. Its purpose and functionalities are to work with data from https://wiseoldman.net/.
+There are currently several generic classes & methods in development that allows this API to seamlessly work with the Wiseoldman API as a 3rd-party package.
+All PR's are open if anyone has things they want to implement/lack of functionality.
+
+The project file & DLL's will not be renamed so they will stay with the old version names for simplicity, but the package will from 04.10.25 be ranamed "Wiseoldman_API_CSharp"
+
+
 
 ## Project Structure
 
