@@ -14,7 +14,28 @@
             * Test a PUT-endpoint
             * Test rate-limit(can the program be abused?)
 
+# Implementing the MVC
+    ##  
+        * Working on creating all the relevant models, and properly assigning the correct datatypes, props & fields.
+        * Architecture
+            - Models (backend)
+                - The models are predefined in the backend, no need for users to change these.
+            - Controllers (frontend & backend)
+                - Control how the models behave
+            - View (frontend)
+                - Spectre CLI frontend(optional)
+
+
+# Tests
+    ## Test-Library Xunit
+        - Red/Green
+
 
 # Build
     - Docker Compose?
     - Can .NET CORE software be shipped as a virtual enviorment?
+
+#### Changelog
+    ## Working on implementing MVC
+    ## Working on implementing proper models
+    
